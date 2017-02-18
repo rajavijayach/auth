@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm';
 
 class App extends Component {
 
+    state = { loggedIn: null };
 
     componentWillMount() {
         firebase.initializeApp(CONFIG);
@@ -25,6 +26,10 @@ class App extends Component {
         switch (this.state.loggedIn) {
             case true:
                 return (
+                    <CardSection>
+                        <Button onPress={() => firebase.auth().signOut()}>
+                            Log Out
+                        </Button>
                     </CardSection>
                 );
             case false: 
